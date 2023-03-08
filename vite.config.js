@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     port: process.env.API_PORT || 8081
+  },
+  build: {
+    outDir: '/var/www/pilot-web'
   }
 })
