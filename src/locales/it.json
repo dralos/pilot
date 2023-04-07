@@ -1,0 +1,27 @@
+{
+    "signUp": "registrati",
+    "username": "nome utente",
+    "home": "home-ita",
+    "profile": "profilo",
+    "token": "token",
+    "id": "id",
+    "login": "login",
+    "ROLE_USER": "utente",
+    "user": "utente",
+    "password": "password",
+    "email": "email",
+    "authorities": "autorità",
+    "labels": {
+        "language": "lingua"
+    },
+    "validation": {
+        "required": "è richiesto il {field}!",
+        "minimun": "deve essere di almeno {count} caratteri!",
+        "maximun": "deve essere di massimo {count} caratteri!",
+        "invalid_email": "l'email non è valida!"
+    },
+    "logOut": "logout",
+    "admin": "administratore",
+    "board": "board",
+    "adminBoard": "@:admin @:board"
+}

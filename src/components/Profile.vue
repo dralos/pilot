@@ -2,41 +2,40 @@
     <div class="container">
         <header class="jumbotron">
             <h3>
-                <strong>{{ currentUser.username }}</strong> Profile
+                <strong>{{ currentUser?.username }}</strong> {{ t('profile') }}
             </h3>
         </header>
         <p>
-            <strong>Token:</strong>
-            {{ currentUser.accessToken.substring(0, 20) }} ... {{ currentUser.accessToken.substr(currentUser.accessToken.length
-                - 20) }}
+            <strong>{{ t('token') }}:</strong>
+            {{ currentUser?.accessToken.substring(0, 20) }} ... {{
+                currentUser?.accessToken.substr(currentUser.accessToken.length
+                    - 20) }}
         </p>
         <p>
-            <strong>Id:</strong>
-            {{ currentUser.id }}
+            <strong>{{ t('id') }}:</strong>
+            {{ currentUser?.id }}
         </p>
         <p>
-            <strong>Email:</strong>
-            {{ currentUser.email }}
+            <strong>{{ t('email') }}:</strong>
+            {{ currentUser?.email }}
         </p>
-        <strong>Authorities:</strong>
+        <strong>{{ t('authorities') }}:</strong>
         <ul>
-            <li v-for="role in currentUser.roles" :key="role">{{ role }}</li>
+            <li v-for="role in currentUser?.roles" :key="role">{{ t(role) }}</li>
         </ul>
     </div>
 </template>
 
-<script>
-export default {
-    name: 'Profile',
-    computed: {
-        currentUser() {
-            return this.$store.state.auth.user;
-        }
-    },
-    mounted() {
-        if (!this.currentUser) {
-            this.$router.push('/login');
-        }
+<script setup>
+import {  onMounted } from 'vue'
+import { useGlobal } from '../utils/shared-globals'
+
+const { router, currentUser, t, locale} = useGlobal()
+
+onMounted(() => {
+    if (!currentUser.value) {
+        router.push({ name: 'login', params: { locale: locale.value } });
     }
-};
+})
+
 </script>

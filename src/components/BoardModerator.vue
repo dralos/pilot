@@ -6,30 +6,22 @@
     </div>
 </template>
 
-<script>
+<script setup>
+import { onMounted, ref } from "vue";
 import UserService from "../services/user.service";
 
-export default {
-    name: "Moderator",
-    data() {
-        return {
-            content: "",
-        };
-    },
-    mounted() {
-        UserService.getModeratorBoard().then(
-            (response) => {
-                this.content = response.data;
-            },
-            (error) => {
-                this.content =
-                    (error.response &&
-                        error.response.data &&
-                        error.response.data.message) ||
-                    error.message ||
-                    error.toString();
-            }
-        );
-    },
-};
+const content = ref("")
+
+onMounted(async () => {
+    try {
+        let response = await UserService.getModeratorBoard();
+        content.value = response.data
+    } catch (error) {
+        content.value = (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+            error.message ||
+            error.toString();
+    }
+})
 </script>

@@ -4,12 +4,12 @@
             <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
             <Form @submit="handleLogin" :validation-schema="schema">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">{{ t('username') }}</label>
                     <Field name="username" type="text" class="form-control" />
                     <ErrorMessage name="username" class="error-feedback" />
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">{{ t('password') }}</label>
                     <Field name="password" type="password" class="form-control" />
                     <ErrorMessage name="password" class="error-feedback" />
                 </div>
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" :disabled="loading">
                         <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-                        <span>Login</span>
+                        <span>{{ t('login') }}</span>
                     </button>
                 </div>
 
@@ -31,60 +31,44 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
+import { onMounted, } from 'vue'
+import { useGlobal } from '../utils/shared-globals'
 
-export default {
-    name: "Login",
-    components: {
-        Form,
-        Field,
-        ErrorMessage,
-    },
-    data() {
-        const schema = yup.object().shape({
-            username: yup.string().required("Username is required!"),
-            password: yup.string().required("Password is required!"),
-        });
+const { loading, message, store, loggedIn, t, router, locale } = useGlobal()
 
-        return {
-            loading: false,
-            message: "",
-            schema,
-        };
-    },
-    computed: {
-        loggedIn() {
-            return this.$store.state.auth.status.loggedIn;
-        },
-    },
-    created() {
-        if (this.loggedIn) {
-            this.$router.push("/profile");
-        }
-    },
-    methods: {
-        handleLogin(user) {
-            this.loading = true;
+const schema = yup.object().shape({
+    username: yup.string().required("Username is required!"),
+    password: yup.string().required("Password is required!"),
+});
 
-            this.$store.dispatch("auth/login", user).then(
-                () => {
-                    this.$router.push("/profile");
-                },
-                (error) => {
-                    this.loading = false;
-                    this.message =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
-                }
-            );
-        },
-    },
-};
+
+onMounted(() => {
+    if (loggedIn.value) {
+        router.push({ name: 'profile', params: { locale: locale.value } })
+    }
+})
+
+const handleLogin = async (user) => {
+    try {
+        loading.value = true
+        await store.dispatch('auth/login', user);
+        router.push({ name: 'profile', params: { locale: locale.value } })
+    } catch (error) {
+        loading.value = false
+        message.value = (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+            error.message ||
+            error.toString();
+    } finally {
+        loading.value = false
+    }
+}
+
+
 </script>
 
 <style scoped></style>
