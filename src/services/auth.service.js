@@ -16,7 +16,7 @@ class AuthService {
         return response.data;
     }
 
-    logout() {
+    async logout() {
         localStorage.removeItem('user');
     }
 

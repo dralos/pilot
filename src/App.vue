@@ -46,8 +46,8 @@
           </router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt" /> {{ t('logOut') }}
+          <a class="nav-link" @click.prevent="logout">
+            <font-awesome-icon icon="sign-out-alt" /> {{ t('logout') }}
           </a>
         </li>
       </div>
@@ -75,19 +75,19 @@
 
 <script setup>
 import { watch, computed, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useI18n } from 'vue-i18n';
 import { SUPPORT_LOCALES as supportLocales } from './plugins/i18n';
-import { useStore } from 'vuex'
+import { useAuthStore } from './stores/authStore'
+import { useGlobal } from './utils/shared-globals'
+import { storeToRefs } from 'pinia';
 
 
-const router = useRouter()
-const store = useStore()
-const { t, locale } = useI18n() // same as `useI18n({ useScope: 'global' })`
-
+const {t, locale, router} = useGlobal()
+const authStore = useAuthStore()
+// use this everytime you want to access computed getters
+// otherwise the reactivity brakes
+const { currentUser } = storeToRefs(authStore)
 const currentLocale = ref(locale.value)
 
-const currentUser = computed(() => store.state.auth.user)
 
 const showAdminBoard = computed(() => {
   if (currentUser.value && currentUser.value['roles']) {
@@ -121,8 +121,8 @@ watch(currentLocale, (newValue, oldValue) => {
   })
 })
 
-const logOut = () => {
-  store.dispatch('auth/logout');
+const logout = async () => {
+  await authStore.logout()
   router.push({ name: 'login', params: { locale: currentLocale.value } });
 }
 

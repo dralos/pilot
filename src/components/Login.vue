@@ -36,8 +36,12 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { onMounted, } from 'vue'
 import { useGlobal } from '../utils/shared-globals'
+import { useAuthStore } from "../stores/authStore";
+import { storeToRefs } from "pinia";
 
-const { loading, message, store, loggedIn, t, router, locale } = useGlobal()
+const { loading, message, t, router, locale } = useGlobal()
+const authStore = useAuthStore()
+const { loggedIn } = storeToRefs(authStore)
 
 const schema = yup.object().shape({
     username: yup.string().required("Username is required!"),
@@ -54,7 +58,7 @@ onMounted(() => {
 const handleLogin = async (user) => {
     try {
         loading.value = true
-        await store.dispatch('auth/login', user);
+        await authStore.loggedIn(user)
         router.push({ name: 'profile', params: { locale: locale.value } })
     } catch (error) {
         loading.value = false

@@ -29,8 +29,12 @@
 <script setup>
 import {  onMounted } from 'vue'
 import { useGlobal } from '../utils/shared-globals'
+import { useAuthStore } from '../stores/authStore';
+import { storeToRefs } from 'pinia';
 
-const { router, currentUser, t, locale} = useGlobal()
+const { router, t, locale} = useGlobal()
+const authStore = useAuthStore()
+const { currentUser } = storeToRefs(authStore)
 
 onMounted(() => {
     if (!currentUser.value) {

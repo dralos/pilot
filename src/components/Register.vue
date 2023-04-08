@@ -41,8 +41,13 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import { onMounted } from "vue";
 import * as yup from "yup";
 import { useGlobal } from "../utils/shared-globals";
+import { useAuthStore } from "../stores/authStore";
+import { storeToRefs } from "pinia";
 
-const { store, router, t, locale, successful, loggedIn, loading, message } = useGlobal()
+
+const authStore = useAuthStore()
+const { loggedIn } = storeToRefs(authStore)
+const { router, t, locale, successful, loading, message } = useGlobal()
 
 const schema = yup.object().shape({
     username: yup
@@ -73,7 +78,7 @@ const handleRegister = async (user) => {
         message.value = ""
         successful.value = false
         loading.value = true
-        let { data } = await store.dispatch('auth/register', user)
+        let { data } = await authStore.register(user)
         message.value = data.message
         successful.value = true
     } catch (error) {
@@ -87,7 +92,6 @@ const handleRegister = async (user) => {
         loading.value = false
     }
 }
-
 
 </script>
 

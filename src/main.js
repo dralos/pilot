@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import store from "./store";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from './plugins/font-awesome'
 import { setupRouter } from './router'
+import { createPinia } from 'pinia';
 import { setupI18n } from './plugins/i18n'
 import it from './locales/it.json'
 
@@ -34,8 +34,8 @@ const router = setupRouter(i18n)
 
 createApp(App)
     .use(vuetify)
-    .use(store)
-    .use(router)
     .use(i18n)
+    .use(createPinia())
+    .use(router)
     .component("font-awesome-icon", FontAwesomeIcon)
     .mount('#app')
