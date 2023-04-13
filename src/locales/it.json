@@ -1,34 +1,34 @@
 {
-    "signUp": "registrati",
-    "username": "nome utente",
-    "home": "home-ita",
-    "profile": "profilo",
-    "token": "token",
-    "id": "id",
-    "login": "login",
-    "ROLE_USER": "utente",
-    "user": "utente",
-    "password": "password",
-    "email": "email",
-    "authorities": "autorità",
-    "labels": {
-        "language": "lingua"
-    },
-    "validation": {
-        "required": "è richiesto il {field}!",
-        "minimun": "deve essere di almeno {count} caratteri!",
-        "maximun": "deve essere di massimo {count} caratteri!",
-        "invalid_email": "l'email non è valida!"
-    },
-    "total": "totale",
-    "empty": "vuoto",
-    "cart": "carrello",
-    "add": "aggiungi",
-    "addToCart": "@:add al @:cart",
-    "emptyCart": "@:cart @:empty",
-    "notFound": "Errore - pagina non trovata",
-    "logout": "logout",
-    "admin": "administratore",
-    "board": "board",
-    "adminBoard": "@:admin @:board"
+  "signUp": "registrati",
+  "username": "nome utente",
+  "home": "home-ita",
+  "profile": "profilo",
+  "token": "token",
+  "id": "id",
+  "login": "login",
+  "ROLE_USER": "utente",
+  "user": "utente",
+  "password": "password",
+  "email": "email",
+  "authorities": "autorità",
+  "labels": {
+    "language": "lingua"
+  },
+  "validation": {
+    "required": "è richiesto il {field}!",
+    "minimun": "deve essere di almeno {count} caratteri!",
+    "maximun": "deve essere di massimo {count} caratteri!",
+    "invalid_email": "l'email non è valida!"
+  },
+  "total": "totale",
+  "empty": "vuoto",
+  "cart": "carrello",
+  "add": "aggiungi",
+  "addToCart": "@:add al @:cart",
+  "emptyCart": "@:cart @:empty",
+  "notFound": "Errore - pagina non trovata",
+  "logout": "logout",
+  "admin": "administratore",
+  "board": "board",
+  "adminBoard": "@:admin @:board"
 }

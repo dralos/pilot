@@ -14,7 +14,7 @@ const content = ref("");
 
 onMounted(async () => {
   try {
-    let response = await UserService.getUserBoard();
+    let response = await UserService.getPublicContent();
     content.value = response.data;
   } catch (error) {
     content.value =

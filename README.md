@@ -43,8 +43,27 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them.
 
+install the following extension on vs code
+
+[eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+[prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+[volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
+add this lines to settings.json on vs code
+
 ```
-Give examples
+    // prettier and elinst settings
+    "vetur.validation.template": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 ```
 
 ### Installing

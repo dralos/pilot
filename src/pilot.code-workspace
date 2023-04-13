@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+        // prettier and elinst settings
+        "vetur.validation.template": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.eslint": true
+        },
+        "[vue]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+  }
+}

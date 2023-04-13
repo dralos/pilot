@@ -1,33 +1,33 @@
 {
-    "signUp": "sign up",
-    "username": "username",
-    "home": "home",
-    "profile": "profile",
-    "token": "token",
-    "id": "id",
-    "login": "login",
-    "ROLE_USER": "user",
-    "user": "utente",
-    "password": "password",
-    "email": "email",
-    "authorities": "authorities",
-    "labels":{
-        "language": "language"
-    },
-    "validation": {
-        "required": "{field} is required",
-        "minimun": "Must be at least {count} characters!",
-        "maximun": "Must be maximum {count} characters!",
-        "invalid_email": "Email is invalid!"
-    },
-    "empty": "empty",
-    "cart": "cart",
-    "add": "add",
-    "addToCart": "@:add to @:cart",
-    "emptyCart": "@:empty @:cart",
-    "notFound": "Error - page not found",
-    "logout": "logout",
-    "admin": "admin",
-    "board": "board",
-    "adminBoard": "@:message:admin @:message:board"
+  "signUp": "sign up",
+  "username": "username",
+  "home": "home",
+  "profile": "profile",
+  "token": "token",
+  "id": "id",
+  "login": "login",
+  "ROLE_USER": "user",
+  "user": "utente",
+  "password": "password",
+  "email": "email",
+  "authorities": "authorities",
+  "labels": {
+    "language": "language"
+  },
+  "validation": {
+    "required": "{field} is required",
+    "minimun": "Must be at least {count} characters!",
+    "maximun": "Must be maximum {count} characters!",
+    "invalid_email": "Email is invalid!"
+  },
+  "empty": "empty",
+  "cart": "cart",
+  "add": "add",
+  "addToCart": "@:add to @:cart",
+  "emptyCart": "@:empty @:cart",
+  "notFound": "Error - page not found",
+  "logout": "logout",
+  "admin": "admin",
+  "board": "board",
+  "adminBoard": "@:message:admin @:message:board"
 }

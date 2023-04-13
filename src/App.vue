@@ -66,7 +66,7 @@
         </ol>
       </div>
     </nav> -->
-    <Nav></Nav>
+    <NavView></NavView>
     <div class="container">
       <router-view />
     </div>
@@ -74,16 +74,7 @@
 </template>
 
 <script setup>
-import Nav from './components/nav.vue';
-import { ref } from 'vue';
-const  links = ref([
-        'Home',
-        'About Us',
-        'Team',
-        'Services',
-        'Blog',
-        'Contact Us',
-      ])
+import NavView from "./components/NavView.vue";
 
 // const {t, locale, router} = useGlobal()
 // const authStore = useAuthStore()
@@ -91,8 +82,6 @@ const  links = ref([
 // otherwise the reactivity brakes
 
 // const currentLocale = ref(locale.value)
-
-
 
 // // sync to switch locale from router locale path
 // watch(router.currentRoute, (newRoute, prevRoute) => {
@@ -116,5 +105,4 @@ const  links = ref([
 //   await authStore.logout()
 //   router.push({ name: 'login', params: { locale: currentLocale.value } });
 // }
-
 </script>
