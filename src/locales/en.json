@@ -20,7 +20,13 @@
         "maximun": "Must be maximum {count} characters!",
         "invalid_email": "Email is invalid!"
     },
-    "logOut": "logout",
+    "empty": "empty",
+    "cart": "cart",
+    "add": "add",
+    "addToCart": "@:add to @:cart",
+    "emptyCart": "@:empty @:cart",
+    "notFound": "Error - page not found",
+    "logout": "logout",
     "admin": "admin",
     "board": "board",
     "adminBoard": "@:message:admin @:message:board"

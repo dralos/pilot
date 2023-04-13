@@ -1,8 +1,7 @@
 import { defineStore } from "pinia";
 import AuthService from "../services/auth.service";
 
-
-const user = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('user'))
 
 export const useAuthStore = defineStore('AuthStore', {
     state: () => {
@@ -14,11 +13,11 @@ export const useAuthStore = defineStore('AuthStore', {
         }
     },
     getters: {
-        loggedIn(state){
-            return state.status.loggedIn
+        loggedIn(){
+            return this.status.loggedIn
         },
-        currentUser(state){
-            return state.user
+        currentUser(){
+            return this.user
         }
     },
     actions: {

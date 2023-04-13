@@ -29,7 +29,7 @@
 <script setup>
 import {  onMounted } from 'vue'
 import { useGlobal } from '../utils/shared-globals'
-import { useAuthStore } from '../stores/authStore';
+import { useAuthStore } from '../stores/auth';
 import { storeToRefs } from 'pinia';
 
 const { router, t, locale} = useGlobal()

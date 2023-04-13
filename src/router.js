@@ -1,13 +1,16 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Home from "./components/Home.vue";
+import Home from "./pages/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
+import Cart from "./pages/Cart.vue";
+import Product from "./pages/Product.vue"
 import { SUPPORT_LOCALES, loadLocaleMessages, setI18nLanguage, getLocale } from "./plugins/i18n";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const BoardAdmin = () => import("./components/BoardAdmin.vue")
 const BoardModerator = () => import("./components/BoardModerator.vue")
 const BoardUser = () => import("./components/BoardUser.vue")
+const NotFound = () => import("./components/NotFound.vue")
 
 export const setupRouter = (i18n) => {
     const locale = getLocale(i18n)
@@ -31,6 +34,16 @@ export const setupRouter = (i18n) => {
             path: "/:locale/register",
             name: "register",
             component: Register,
+        },
+        {
+            path: "/:locale/cart",
+            name: "cart",
+            component: Cart
+        },
+        {
+            path: "/:locale/product",
+            name: "product",
+            component: Product
         },
         {
             path: "/:locale/profile",
@@ -58,7 +71,7 @@ export const setupRouter = (i18n) => {
         },
         {
             path: '/:pathMatch(.*)*',
-            redirect: () => `/${locale}`
+            component: NotFound
         }
     ];
     

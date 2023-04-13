@@ -36,7 +36,7 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 import { onMounted, } from 'vue'
 import { useGlobal } from '../utils/shared-globals'
-import { useAuthStore } from "../stores/authStore";
+import { useAuthStore } from "../stores/auth";
 import { storeToRefs } from "pinia";
 
 const { loading, message, t, router, locale } = useGlobal()
@@ -58,7 +58,7 @@ onMounted(() => {
 const handleLogin = async (user) => {
     try {
         loading.value = true
-        await authStore.loggedIn(user)
+        await authStore.login(user)
         router.push({ name: 'profile', params: { locale: locale.value } })
     } catch (error) {
         loading.value = false

@@ -3,6 +3,7 @@ import './style.css'
 import App from './App.vue'
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "@mdi/font/css/materialdesignicons.css"
 import { FontAwesomeIcon } from './plugins/font-awesome'
 import { setupRouter } from './router'
 import { createPinia } from 'pinia';
@@ -18,6 +19,12 @@ import * as directives from 'vuetify/directives'
 const vuetify = createVuetify({
   components,
   directives,
+  icons: {
+    iconfont: 'mdi'
+  },
+  theme: {
+    defaultTheme: 'dark'
+  }
 })
 
 // i18n

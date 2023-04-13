@@ -41,7 +41,7 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import { onMounted } from "vue";
 import * as yup from "yup";
 import { useGlobal } from "../utils/shared-globals";
-import { useAuthStore } from "../stores/authStore";
+import { useAuthStore } from "../stores/auth";
 import { storeToRefs } from "pinia";
 
 

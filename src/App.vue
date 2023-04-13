@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <a href="/" class="navbar-brand">NavBar</a>
+  <div>
+    <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="/" class="navbar-brand">Logo</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link :to="{ name: 'home', params: { locale } }" class="nav-link">
+          <router-link class="nav-link">
             <font-awesome-icon icon="home" /> {{ t('home') }}
           </router-link>
         </li>
@@ -65,8 +65,8 @@
           </li>
         </ol>
       </div>
-    </nav>
-
+    </nav> -->
+    <Nav></Nav>
     <div class="container">
       <router-view />
     </div>
@@ -74,56 +74,47 @@
 </template>
 
 <script setup>
-import { watch, computed, ref } from 'vue';
-import { SUPPORT_LOCALES as supportLocales } from './plugins/i18n';
-import { useAuthStore } from './stores/authStore'
-import { useGlobal } from './utils/shared-globals'
-import { storeToRefs } from 'pinia';
+import Nav from './components/nav.vue';
+import { ref } from 'vue';
+const  links = ref([
+        'Home',
+        'About Us',
+        'Team',
+        'Services',
+        'Blog',
+        'Contact Us',
+      ])
 
-
-const {t, locale, router} = useGlobal()
-const authStore = useAuthStore()
+// const {t, locale, router} = useGlobal()
+// const authStore = useAuthStore()
 // use this everytime you want to access computed getters
 // otherwise the reactivity brakes
-const { currentUser } = storeToRefs(authStore)
-const currentLocale = ref(locale.value)
+
+// const currentLocale = ref(locale.value)
 
 
-const showAdminBoard = computed(() => {
-  if (currentUser.value && currentUser.value['roles']) {
-    return currentUser.value['roles'].includes('ROLE_ADMIN');
-  }
-  return false;
-})
 
-const showModeratorBoard = computed(() => {
-  if (currentUser.value && currentUser.value['roles']) {
-    return currentUser.value['roles'].includes('ROLE_MODERATOR')
-  }
-  return false;
-})
+// // sync to switch locale from router locale path
+// watch(router.currentRoute, (newRoute, prevRoute) => {
+//   currentLocale.value = newRoute.params.locale
+// })
 
-// sync to switch locale from router locale path
-watch(router.currentRoute, (newRoute, prevRoute) => {
-  currentLocale.value = newRoute.params.locale
-})
+// /**
+//  * when change the locale, go to locale route
+//  *
+//  * when the changes are detected, load the locale message and set the language via vue-router navigation guard.
+//  * change the vue-i18n locale too.
+//  */
+// watch(currentLocale, (newValue, oldValue) => {
+//   router.push({
+//     name: router.currentRoute.value.name,
+//     params: { locale: newValue }
+//   })
+// })
 
-/**
- * when change the locale, go to locale route
- *
- * when the changes are detected, load the locale message and set the language via vue-router navigation guard.
- * change the vue-i18n locale too.
- */
-watch(currentLocale, (newValue, oldValue) => {
-  router.push({
-    name: router.currentRoute.value.name,
-    params: { locale: newValue }
-  })
-})
-
-const logout = async () => {
-  await authStore.logout()
-  router.push({ name: 'login', params: { locale: currentLocale.value } });
-}
+// const logout = async () => {
+//   await authStore.logout()
+//   router.push({ name: 'login', params: { locale: currentLocale.value } });
+// }
 
 </script>

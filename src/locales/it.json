@@ -20,7 +20,14 @@
         "maximun": "deve essere di massimo {count} caratteri!",
         "invalid_email": "l'email non è valida!"
     },
-    "logOut": "logout",
+    "total": "totale",
+    "empty": "vuoto",
+    "cart": "carrello",
+    "add": "aggiungi",
+    "addToCart": "@:add al @:cart",
+    "emptyCart": "@:cart @:empty",
+    "notFound": "Errore - pagina non trovata",
+    "logout": "logout",
     "admin": "administratore",
     "board": "board",
     "adminBoard": "@:admin @:board"
